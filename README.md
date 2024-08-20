@@ -56,9 +56,9 @@ Worker线程数：20
 
 ## 如何编译
 
-### Protobuf准备
+### Protobuf准备 (必须执行)
 
-PhxRPC必须依赖的第三方库只有Protobuf。在编译前，在`third_party`目录放置好`protobuf`目录，或者通过软链的形式。
+sh build.sh
 
 ### boost优化
 
@@ -78,6 +78,12 @@ PhxRPC在ServerIO以及Client并发连接管理上使用了ucontext，而boost�
 make (默认是-O2编译，如需编译debug版，执行 make debug=y)
 make boost (可选，编译PhxRPC的boost优化插件，编译之前先准备好boost库)
 ```
+
+### 作为动态库编译
+
+cd phxrpc && mkdir out && cd out && cmake .. -DCMAKE_BUILD_TYPE=Release -GNinja -DBUILD_SHARED_LIB=ON && cmake --build .
+或作为subdirectories加入依赖phxrcp的项目
+add_subdirectories(/path/to/phxrpc/phxrpc)
 
 ## 如何使用
 

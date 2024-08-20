@@ -32,9 +32,8 @@ if [ ! -d boost ]; then
   export BOOST_ROOT=`pwd`/boost
 fi
 
-
-cd ..
-
-make
+cd ../phxrpc/rpc;
+../../third_party/protobuf/bin/protoc --cpp_out=. phxrpc.proto
+cd ../..;
 
 exit $?
